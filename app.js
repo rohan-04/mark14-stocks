@@ -8,7 +8,13 @@ function submitHandler() {
 	let initialCost = Number(initialPrice.value);
 	let quantity = Number(stocksQuantity.value);
 	let currPrice = Number(currentPrice.value);
-	calculateProfitAndLoss(initialCost, quantity, currPrice);
+
+	if (initialCost > 0 && quantity > 0 && currPrice > 0) {
+		calculateProfitAndLoss(initialCost, quantity, currPrice);
+	} else {
+		outputBox.style.color = 'white';
+		outputBox.innerText = 'Please enter correct or positive values 😤';
+	}
 }
 
 function calculateProfitAndLoss(initial, quantity, current) {
